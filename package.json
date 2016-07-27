@@ -1,0 +1,37 @@
+{
+  "name": "css-inline-loader",
+  "version": "0.1.0",
+  "description": "CSS inline loader for webpack",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/minodisk/css-inline-loader.git"
+  },
+  "keywords": [
+    "webpack",
+    "loader"
+  ],
+  "author": "Daisuke Mino",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/minodisk/css-inline-loader/issues"
+  },
+  "homepage": "https://github.com/minodisk/css-inline-loader#readme",
+  "dependencies": {
+    "css": "^2.2.1",
+    "loader-utils": "^0.2.15",
+    "lodash.camelcase": "^4.2.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3",
+    "require-from-string": "^1.2.0",
+    "should": "^10.0.0"
+  }
+}
