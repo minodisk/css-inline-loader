@@ -1,4 +1,4 @@
-# css-inline-loader
+# css-inline-loader [![CircleCI](https://circleci.com/gh/minodisk/css-inline-loader.svg?style=svg)](https://circleci.com/gh/minodisk/css-inline-loader)
 
 CSS inline loader for Webpack
 
