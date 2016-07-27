@@ -1,6 +1,6 @@
 # css-inline-loader [![CircleCI](https://circleci.com/gh/minodisk/css-inline-loader.svg?style=svg)](https://circleci.com/gh/minodisk/css-inline-loader)
 
-CSS inline loader for Webpack
+A loader for webpack that transforms CSS to JavaScript object.
 
 ## Install
 
@@ -11,16 +11,17 @@ CSS inline loader for Webpack
 webpack.config.js:
 
 ```js
-module: {
-  loaders: [{
-      test: /\.css$/,
-      loaders: [
-        'inline',
-        'css'
-      ],
-      exclude: /node_modules/
-    }
-  ]
+module.exports = {
+  module: {
+    loaders: [
+      {
+        test: /\.css$/,
+        loaders: [
+          'css-inline'
+        ]
+      }
+    ]
+  }
 }
 ```
 
@@ -28,19 +29,20 @@ example.css:
 
 ```css
 .foo {
-  background-color: #ff0000;
+  background-color: #FF0000;
 }
 ```
 
 example.js
 
-```js
-var styles = require('./example.css');
-console.log(styles);  // -> {
-                      //   foo: {
-                      //     backgroundColor: '#ff0000'
-                      //   }
-                      // }
+```jsx
+var styles = require('./example.css')
+
+console.log(styles) // -> {
+                    //   foo: {
+                    //     backgroundColor: '#FF0000'
+                    //   }
+                    // }
 
 class MyComponent extends React.Component {
   render () => {
@@ -60,16 +62,17 @@ Convert key from any format to camel case.
 webpack.config.js:
 
 ```js
-module: {
-  loaders: [{
-      test: /\.css$/,
-      loaders: [
-        'inline?camelCase',
-        'css'
-      ],
-      exclude: /node_modules/
-    }
-  ]
+module.exports = {
+  module: {
+    loaders: [
+      {
+        test: /\.css$/,
+        loaders: [
+          'css-inline?camelCase'
+        ]
+      }
+    ]
+  }
 }
 ```
 
@@ -77,19 +80,20 @@ example.css:
 
 ```css
 .foo-bar {
-  background-color: #ff0000;
+  background-color: #FF0000;
 }
 ```
 
 example.js
 
-```js
-var styles = require('./example.css');
-console.log(styles);  // -> {
-                      //   fooBar: {
-                      //     backgroundColor: '#ff0000'
-                      //   }
-                      // }
+```jsx
+var styles = require('./example.css')
+
+console.log(styles) // -> {
+                    //   fooBar: {
+                    //     backgroundColor: '#FF0000'
+                    //   }
+                    // }
 
 class MyComponent extends React.Component {
   render () => {
