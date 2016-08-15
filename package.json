@@ -1,6 +1,6 @@
 {
   "name": "css-inline-loader",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "CSS inline loader for webpack",
   "main": "index.js",
   "directories": {
