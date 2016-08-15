@@ -2,19 +2,22 @@
 
 const css = require('css')
 const camelCase = require('lodash.camelcase')
+const upperFirst = require('lodash.upperfirst')
 const loaderUtils = require('loader-utils')
 
+// Capitalize vendor prefixes other than ms
+const rVendorPrefix = /^-(?:webkit|moz|o)-/
+const upperCamelCase = str => upperFirst(camelCase(str))
+const capitalizePropertyName = name => rVendorPrefix.test(name) ? upperCamelCase(name) : camelCase(name)
+
 const transform = (content, camelCaseKeys) => {
-  return css
-    .parse(content)
-    .stylesheet
-    .rules
+  return css.parse(content).stylesheet.rules
     .filter(({ type }) => type === 'rule')
     .reduce((styles, { selectors, declarations }) => {
       const styling = declarations
         .filter(({ type }) => type === 'declaration')
         .reduce((style, { property, value }) => {
-          style[camelCase(property)] = value
+          style[capitalizePropertyName(property)] = value
           return style
         }, {})
       selectors.forEach((camelCaseKeys) ?
